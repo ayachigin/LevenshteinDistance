@@ -4,13 +4,9 @@ module LevenshteinDistance (levenshteinDistance) where
 import Data.Array
 
 
-fromList :: [a] -> Array Int a
-fromList ls = array (0, length ls - 1) $ zip [0..] ls
-
-makeArray :: Ix i => (i, i) -> (i -> e) -> Array i e
-makeArray bnds f = array bnds [(i, f i) | i <- range bnds]
-
--- | levenshteinDistance
+-- |
+-- Levenshtein Distance
+-- Measure similarity between two lists.
 --
 -- >>> levenshteinDistance "hoge" "hoge"
 -- 0
@@ -39,3 +35,9 @@ levenshteinDistance as bs = table ! (lenA, lenB)
             replace = table ! (a-1, b-1)
             charA = arrayA ! (a-1)
             charB = arrayB ! (b-1)
+
+fromList :: [a] -> Array Int a
+fromList ls = array (0, length ls - 1) $ zip [0..] ls
+
+makeArray :: Ix i => (i, i) -> (i -> e) -> Array i e
+makeArray bnds f = array bnds [(i, f i) | i <- range bnds]
