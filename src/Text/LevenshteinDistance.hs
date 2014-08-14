@@ -1,4 +1,4 @@
-module LevenshteinDistance (levenshteinDistance) where
+module Text.LevenshteinDistance (levenshteinDistance) where
 
 
 import Data.Array
